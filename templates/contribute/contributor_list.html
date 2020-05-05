@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="col-xs-12 col-md-8 col-lg-6 col-sm-12 mt=5 pt-5 mx-auto mb-5">
+    <div class="card">
+    <table class="table table-borderless">
+  <thead>
+    <tr>
+      <th scope="col">SI NO</th>
+      <th scope="col" colspan="2">Name</th>
+      <th scope="col">Contribution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr> {% for contributor in object_list %}
+      <th scope="row">{{forloop.counter}}</th>
+      <!--<td colspan="2">Larry the Bird</td>-->
+        <td colspan="2">{{ contributor.name }}</td>
+      <td>{{ contributor.email }}</td>
+    </tr>{% endfor %}
+  </tbody>
+</table>
+      </div>
+</div>
+<!--pagination-->
+{% if is_paginated %}
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item ">
+            {% if page_obj.has_previous %}
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" tabindex="-1">Prev</a>
+            {% endif %}
+        </li>
+        {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+        <li class="page-item active"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+        {% elif num > page_obj.number|add:'-2' and num < page_obj.number|add:'2' %}
+        <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+        {% endif %}
+        {% endfor %}
+        <li class="page-item">
+            {% if page_obj.has_next %}
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+            {% endif %}
+        </li>
+    </ul>
+</nav>
+{% endif %}
+<!--pagination ends here-->
+{% endblock content %}
