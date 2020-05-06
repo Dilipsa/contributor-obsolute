@@ -1,28 +1,29 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="col-xs-12 col-md-8 col-lg-6 col-sm-12 mt=5 pt-5 mx-auto mb-5">
+<div class="col-xs-12 col-md-8 col-lg-6 col-sm-12 mx-auto mb-5">
     <div class="card">
-    <table class="table table-borderless">
-  <thead>
-    <tr>
-      <th scope="col">SI NO</th>
-      <th scope="col" colspan="2">Name</th>
-      <th scope="col">Contribution</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr> {% for contributor in object_list %}
-      <th scope="row">{{forloop.counter}}</th>
-      <!--<td colspan="2">Larry the Bird</td>-->
-        <td colspan="2">{{ contributor.name }}</td>
-      <td>{{ contributor.email }}</td>
-    </tr>{% endfor %}
-  </tbody>
-</table>
-      </div>
+        <table class="table table-borderless">
+            <thead>
+            <tr>
+                <th scope="col">SI NO</th>
+                <th scope="col" colspan="2">Name</th>
+                <th scope="col">Contribution</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr> {% for contributor in object_list %}
+                <th scope="row">{{forloop.counter}}</th>
+                <!--<td colspan="2">Larry the Bird</td>-->
+                <td colspan="2">{{ contributor.name }}</td>
+                <td>{{ contributor.email }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
-<!--pagination-->
+<!--pagination starts here-->
 {% if is_paginated %}
 <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">

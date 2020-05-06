@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="col-xs-12 col-md-8 col-lg-6 col-sm-12 mt=5 mx-auto  pt-5 mb-5">
-
-<div class="card text-center px-5 py-5">
-  <div class="card-body">
-    <p class="card-title h4">Lets Build Together, Build Better</p>
-    <p class="card-title h5">open source projects are the driving force today forsmall startapp, enterprise to govt. organization.
-        Lets work together and build better software.</p>
-    <a href="{% url 'contributors:contributor_list' %}" class="h4">Read the contributor list</a>
-  </div>
-</div>
+<div class="col-xs-12 col-md-8 col-lg-6 col-sm-12 mx-auto  mb-5">
+    <div class="card text-center px-5 py-5">
+        <div class="card-body">
+            <p class="card-title h4">Lets Build Together, Build Better</p>
+            <p class="card-title h5">open source projects are the driving force today forsmall startapp, enterprise to
+                govt. organization.
+                Lets work together and build better software.</p>
+            <a href="{% url 'contributors:contributor_list' %}" class="h4">Read the contributor list</a>
+        </div>
+    </div>
 </div>
 {% endblock content %}
