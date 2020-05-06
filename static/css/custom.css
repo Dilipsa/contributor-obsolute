@@ -10,10 +10,6 @@
     background: #007E92!important;
 }
 
-.btn-danger {
-    background: #007E92!important;
-}
-
 .btn.btn-danger{
     padding: 10px 15px!important;
     border-radius: 10px;
@@ -29,4 +25,4 @@ body, h3{
     font-family: 'EB Garamond', serif;
     }
 
-body { padding-top: 80px!important; }
+body { padding-top: 80px; }
