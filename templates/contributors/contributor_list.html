@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
 <div class="col-xs-12 col-md-8 col-lg-6 col-sm-12 mx-auto mb-5">
@@ -16,7 +17,7 @@
                 <th scope="row">{{forloop.counter}}</th>
                 <!--<td colspan="2">Larry the Bird</td>-->
                 <td colspan="2">{{ contributor.name }}</td>
-                <td>{{ contributor.email }}</td>
+                <td>{{ contributor.resume }}</td>
             </tr>
             {% endfor %}
             </tbody>

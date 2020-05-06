@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('role', models.CharField(choices=[('as a developer', 'as a developer'), ('as a designer', 'as a designer'), ('as a documentation team', 'as a documentation team')], max_length=25)),
-                ('contributor', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='contributors.ContributorModel')),
+                ('contributors', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='contributors.ContributorModel')),
             ],
         ),
     ]

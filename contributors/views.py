@@ -5,7 +5,7 @@ from django.views.generic.list import ListView
 
 
 def home_view(request):
-    return render(request, 'contribute/home.html')
+    return render(request, 'contributors/home.html')
 
 
 def create_contributor_view(request):
@@ -16,15 +16,15 @@ def create_contributor_view(request):
             return redirect('/thank-you')
     else:
         form = ContributeModelForm()
-    return render(request, 'contribute/create_contributor.html', {'form': form})
+    return render(request, 'contributors/create_contributor.html', {'form': form})
 
 
 # def contributor_list_view(request):
 #     contributor_obj = CreateContributor.objects.all()
-#     return render(request, 'contribute/contributor_list.html', {'contributor_obj': contributor_obj})
+#     return render(request, 'contributors/contributor_list.html', {'contributor_obj': contributor_obj})
 
 class ContributorListView(ListView):
     model = CreateContributor
     paginate_by = 4
-    template_name = 'contribute/contributor_list.html'
+    template_name = 'contributors/contributor_list.html'
     ordering = ['-id']

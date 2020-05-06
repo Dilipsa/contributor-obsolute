@@ -1,13 +1,3 @@
-form .searching{
-    box-sizing:border-box;
-    box-shadow: none;
-    outline: none;
-    border:none;
-    border-bottom: 1px solid green;
-}
-input:focus{
-    background:none!important;
-}
 .btn-primary {
     background: #007E92!important;
 }
