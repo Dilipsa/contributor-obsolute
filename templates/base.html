@@ -11,16 +11,14 @@
     <body>
     {% include 'template_blocks/navbar.html' %}
     {% block body %}
-    <style>
-        body, h3{
-    font-family: 'EB Garamond', serif;
-    }
-    </style>
+
     {% block content %}
-    {% endblock %}
-    {% endblock %}
+    {% endblock content %}
+
+    {% endblock body %}
+
     {% block extra_body %}
-    {% endblock %}
+    {% endblock extra_body%}
 
     {% include 'template_blocks/footers.html' %}
     {% include 'template_blocks/javascript.html' %}

@@ -4,12 +4,12 @@
 {% load crispy_forms_tags %}
 {% block content %}
 {% if object_list %}
-<div class="col-xs-12 col-md-8 col-lg-6 col-sm-12 mx-auto mb-5">
+<div class="col-sm-12 col-md-8 col-lg-6 mx-auto mb-5">
     <table class="table table-borderless">
         <thead>
         <tr>
             <th scope="col" class="h4">SI NO</th>
-            <th scope="col" colspan="2" class="h4">Name</th>
+            <th scope="col" class="h4">Name</th>
             <th scope="col" class="h4">Contribution</th>
         </tr>
         </thead>
@@ -17,9 +17,9 @@
         <tr> {% for contributor in object_list %}
             {% if contributor.contributed %}
             <th scope="row"><a href="" class="h5">{{ forloop.counter }}</a></th>
-            <td colspan="2"><a class=h5 href="#" data-toggle="popover" data-placement="bottom" title="{{ contributor.profession }}"
+            <td><a class=h5 href="" data-toggle="popover" data-placement="bottom" title="{{ contributor.profession }}"
                    data-content="{{ contributor.about }}." data-trigger="hover">{{ contributor.name }}</a></td>
-            <td><a class=h5 href="#" data-toggle="popover" data-placement="bottom" title="{{ contributor.profession }}"
+            <td><a class=h5 href="" data-toggle="popover" data-placement="bottom" title="{{ contributor.profession }}"
                    data-content="{{ contributor.about }}." data-trigger="hover">{{ contributor.get_role_display }}</a></td>
         </tr>
         {% endif %}
