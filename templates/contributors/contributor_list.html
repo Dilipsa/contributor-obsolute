@@ -16,10 +16,11 @@
         <tbody >
         <tr> {% for contributor in object_list %}
             {% if contributor.contributed %}
-            <th scope="row"><a href="{{contributor.get_absolute_url }}" class="h5">{{ forloop.counter }}</a></th>
-            <td colspan="2"><a class=h5 href="#" data-toggle="popover" title="popover header" data-content="this is the body of popover">{{ contributor.name }}</a></td>
-            <td><a class=h5 href="#" data-toggle="popover" data-placement="bottom" title="popover on bottom"
-                   data-content="Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.">{{ contributor.get_role_display }}</a></td>
+            <th scope="row"><a href=" " class="h5">{{ forloop.counter }}</a></th>
+            <td colspan="2"><a class=h5 href="#" data-toggle="popover" data-placement="bottom" title="{{ contributor.profession }}"
+                   data-content="{{ contributor.about }}.">{{ contributor.name }}</a></td>
+            <td><a class=h5 href="#" data-toggle="popover" data-placement="bottom" title="{{ contributor.profession }}"
+                   data-content="{{ contributor.about }}.">{{ contributor.get_role_display }}</a></td>
         </tr>
         {% endif %}
         {% endfor %}

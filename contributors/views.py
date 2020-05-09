@@ -33,8 +33,3 @@ class ContributorListView(ListView):
     model = CreateContributor
     paginate_by = 4
     template_name = 'contributors/contributor_list.html'
-
-
-class ContributorDetailView(DetailView):
-    model = CreateContributor
-    template_name = 'contributors/contributor_detail.html'

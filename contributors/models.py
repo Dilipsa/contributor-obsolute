@@ -49,6 +49,3 @@ class CreateContributor(models.Model):
 
     def __str__(self):
         return self.name
-
-    def get_absolute_url(self, *args, **kwargs):
-        return reverse('contributors:contributor_detail', kwargs={'pk': self.pk})

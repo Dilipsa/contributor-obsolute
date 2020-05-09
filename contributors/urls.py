@@ -4,7 +4,6 @@ from django.urls import path
 from .views import (
             ContributorListView,
             CreateContributorView,
-            ContributorDetailView,
         )
 
 app_name = 'contributors'
@@ -14,5 +13,4 @@ urlpatterns = [
     path('create-contributor', CreateContributorView.as_view(), name='create_contributor'),
     path('contributor-list', ContributorListView.as_view(), name='contributor_list'),
     path('contributor-list', ContributorListView.as_view(), name='contributor_list'),
-    path('contributor-detail/<int:pk>', ContributorDetailView.as_view(), name='contributor_detail'),
 ]
