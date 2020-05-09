@@ -1,24 +1,3 @@
-.btn-primary {
-    background: #007E92!important;
-}
-
-.btn.btn-primary{
-    padding: 10px 15px!important;
-    border-radius: 10px;
-    font-weight: 300;
-
-    background: #007E92!important;
-}
-
-.btn.btn-danger{
-    padding: 10px 15px!important;
-    border-radius: 10px;
-    font-weight: 300;
-}
-
-.pagination .page-item.active .page-link {
-    background: #007E92!important;
-}
 
 
 body, h3{
@@ -26,3 +5,11 @@ body, h3{
     }
 
 body { padding-top: 80px; }
+
+
+html, body {height:100%;}
+footer{position: absolute; bottom: 0; left: 0; right: 0;}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: #e7e7e7;
+}

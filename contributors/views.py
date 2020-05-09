@@ -1,30 +1,40 @@
 from django.shortcuts import render, redirect
-from .forms import ContributeModelForm
+from .forms import ContributeForm
 from .models import CreateContributor
 from django.views.generic.list import ListView
+from django.views.generic import View
+from django.views.generic.detail import DetailView
 
 
-def home_view(request):
-    return render(request, 'contributors/home.html')
+class CreateContributorView(View):
+    def post(self, *args, **kwargs):
+        if self.request.method == "POST":
+            form = ContributeForm(self.request.POST or None, self.request.FILES or None)
+            if form.is_valid():
+                contributor_object = CreateContributor(name=form.cleaned_data['name'],
+                                                       email=form.cleaned_data['email'],
+                                                       phone=form.cleaned_data['phone'],
+                                                       role=form.cleaned_data['role'],
+                                                       resume=form.cleaned_data['resume'],
+                                                       profession=form.cleaned_data['profession'],
+                                                       about=form.cleaned_data['about']
+                                                       )
+                contributor_object.save()
+                return redirect('/thank-you')
 
+    def get(self, *args, **kwargs):
+        context = {
+            'form': ContributeForm()
+        }
+        return render(self.request, 'contributors/create_contributor.html', context)
 
-def create_contributor_view(request):
-    if request.method == "POST":
-        form = ContributeModelForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('/thank-you')
-    else:
-        form = ContributeModelForm()
-    return render(request, 'contributors/create_contributor.html', {'form': form})
-
-
-# def contributor_list_view(request):
-#     contributor_obj = CreateContributor.objects.all()
-#     return render(request, 'contributors/contributor_list.html', {'contributor_obj': contributor_obj})
 
 class ContributorListView(ListView):
     model = CreateContributor
     paginate_by = 4
     template_name = 'contributors/contributor_list.html'
-    ordering = ['-id']
+
+
+class ContributorDetailView(DetailView):
+    model = CreateContributor
+    template_name = 'contributors/contributor_detail.html'

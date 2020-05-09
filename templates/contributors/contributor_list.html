@@ -1,56 +1,62 @@
 {% extends "base.html" %}
+<script type="text/javascript"></script>
 {% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
-
+{% if object_list %}
 <div class="col-xs-12 col-md-8 col-lg-6 col-sm-12 mx-auto mb-5">
-    <div class="card">
-        <table class="table table-borderless">
-            <thead>
-            <tr>
-                <th scope="col">SI NO</th>
-                <th scope="col" colspan="2">Name</th>
-                <th scope="col">Contribution</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr> {% for contributor in object_list %}
-                {% if contributor.contributed %}
-                <th scope="row">{{forloop.counter}}</th>
-                <td colspan="2">{{ contributor.name }}</td>
-                <td>{{ contributor.role.contribution }}</td>
-            </tr>
-            {% endif %}
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
-</div>
-
-<!--pagination starts here-->
-{% if is_paginated %}
-<nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-        <li class="page-item ">
-            {% if page_obj.has_previous %}
-            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" tabindex="-1">Prev</a>
-            {% endif %}
-        </li>
-        {% for num in page_obj.paginator.page_range %}
-        {% if page_obj.number == num %}
-        <li class="page-item active"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
-        {% elif num > page_obj.number|add:'-2' and num < page_obj.number|add:'2' %}
-        <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+    <table class="table table-borderless">
+        <thead>
+        <tr>
+            <th scope="col" class="h4">SI NO</th>
+            <th scope="col" colspan="2" class="h4">Name</th>
+            <th scope="col" class="h4">Contribution</th>
+        </tr>
+        </thead>
+        <tbody >
+        <tr> {% for contributor in object_list %}
+            {% if contributor.contributed %}
+            <th scope="row"><a href="{{contributor.get_absolute_url }}" class="h5">{{ forloop.counter }}</a></th>
+            <td colspan="2"><a class=h5 href="#" data-toggle="popover" title="popover header" data-content="this is the body of popover">{{ contributor.name }}</a></td>
+            <td><a class=h5 href="#" data-toggle="popover" data-placement="bottom" title="popover on bottom"
+                   data-content="Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.">{{ contributor.get_role_display }}</a></td>
+        </tr>
         {% endif %}
         {% endfor %}
-        <li class="page-item">
-            {% if page_obj.has_next %}
-            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
-            {% endif %}
-        </li>
-    </ul>
-</nav>
-{% endif %}
-<!--pagination ends here-->
+        </tbody>
+    </table>
+</div>
 
+<!--pagination starts-->
+    {% if is_paginated %}
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+              {% if page_obj.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+              {% endif %}
+
+              {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                {% elif num > page_obj.number|add:'-2' and num < page_obj.number|add:'2' %}
+              <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                {% endif %}
+              {% endfor %}
+
+              {% if page_obj.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+              {% endif %}
+          </ul>
+        </nav>
+        {% endif %}
+    {% endif %}
 {% endblock content %}
+
+{% block extra_scripts %}
+<script>
+ $(document).ready(function(){
+		$('[data-toggle="popover"]').popover();
+	});
+	</script>
+{% endblock extra_scripts %}
+

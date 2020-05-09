@@ -22,9 +22,10 @@
     {% block extra_body %}
     {% endblock %}
 
+    {% include 'template_blocks/footers.html' %}
     {% include 'template_blocks/javascript.html' %}
     {% block extra_scripts %}
     {% endblock extra_scripts %}
-    {% include 'template_blocks/footers.html' %}
+
     </body>
 </html>
