@@ -18,9 +18,9 @@
             {% if contributor.contributed %}
             <th scope="row"><a href=" " class="h5">{{ forloop.counter }}</a></th>
             <td colspan="2"><a class=h5 href="#" data-toggle="popover" data-placement="bottom" title="{{ contributor.profession }}"
-                   data-content="{{ contributor.about }}.">{{ contributor.name }}</a></td>
+                   data-content="{{ contributor.about }}." data-trigger="hover">{{ contributor.name }}</a></td>
             <td><a class=h5 href="#" data-toggle="popover" data-placement="bottom" title="{{ contributor.profession }}"
-                   data-content="{{ contributor.about }}.">{{ contributor.get_role_display }}</a></td>
+                   data-content="{{ contributor.about }}." data-trigger="hover">{{ contributor.get_role_display }}</a></td>
         </tr>
         {% endif %}
         {% endfor %}
@@ -54,10 +54,10 @@
 {% endblock content %}
 
 {% block extra_scripts %}
-<script>
- $(document).ready(function(){
-		$('[data-toggle="popover"]').popover();
-	});
-	</script>
+    <script>
+     $(document).ready(function(){
+            $('[data-toggle="popover"]').popover();
+        });
+    </script>
 {% endblock extra_scripts %}
 
